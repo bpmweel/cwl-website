@@ -1,0 +1,17 @@
+#!/usr/bin/env cwl-runner
+cwl:tool: cwlsite.cwl
+staging: true
+jekyll-site: {class: Directory, location: ../content}
+user_guide: {class: Directory, location: ../user_guide}
+novice-tutorial: {class: Directory, location: ../cwl-novice-tutorial}
+rnaseq-training: {class: Directory, location: ../rnaseq-cwl-training}
+render:
+- {$import: cwlsite-draft3-job.json}
+- {$import: cwlsite-v1.0.0-job.json}
+- {$import: cwlsite-v1.1.0-job.yaml}
+- {$import: cwlsite-v1.2-job.yaml}
+schemas:
+- {$import: cwlsite-draft3-schemas.json}
+- {$import: cwlsite-v1.0.0-schemas.json}
+- {$import: cwlsite-v1.1.0-schemas.yaml}
+- {$import: cwlsite-v1.2-schemas.yaml}

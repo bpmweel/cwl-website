@@ -43,6 +43,9 @@ inputs:
   rnaseq-training-targetdir:
     type: string
     default: "rnaseq-training"
+  staging:
+    type: boolean
+    default: false
 
 outputs:
   doc_out:
@@ -129,7 +132,7 @@ steps:
     run:  makedoc.cwl
 
   jekyll:
-    in: {site: jekyll-site}
+    in: {site: jekyll-site, staging: staging}
     out: [generated]
     run: cwl-jekyll.cwl
 

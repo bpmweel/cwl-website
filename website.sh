@@ -29,4 +29,10 @@ fi
 
 mkdir -p common-workflow-language.github.io
 cd common-workflow-language.github.io
-cwltool $@ --cache $WORKSPACE/cache --relax-path-checks $WORKSPACE/site/cwlsite.cwl $WORKSPACE/site/cwlsite-job.yaml
+
+if [[ "$1" == "--staging" ]] ; then
+    shift
+    cwltool $@ --cache $WORKSPACE/cache --relax-path-checks $WORKSPACE/site/cwlsite.cwl $WORKSPACE/site/cwlsite-job-staging.yaml
+else
+    cwltool $@ --cache $WORKSPACE/cache --relax-path-checks $WORKSPACE/site/cwlsite.cwl $WORKSPACE/site/cwlsite-job.yaml
+fi
